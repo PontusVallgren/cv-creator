@@ -3,7 +3,8 @@ import "../style/GenerateCv.css";
 
 const GenerateCv = (props) => {
   const input = props.input;
-  const info = props.info;
+  const dataExp = props.dataExp;
+  const dataEdu = props.dataEdu;
 
   return (
     <div className="cv-container">
@@ -24,7 +25,7 @@ const GenerateCv = (props) => {
       </div>
       <div className="exp-container">
         <h3 className="exp-title">Experience</h3>
-        {info.map((item) => (
+        {dataExp.map((item) => (
           <div className="exp-dates-ctn">
             <p className="exp-dates">
               {item.experienceFrom} - {item.experienceTo}
@@ -35,6 +36,23 @@ const GenerateCv = (props) => {
             <div className="exp-comp-city-ctn">
               <p className="exp-company">{item.company}</p>
               <p className="exp-city">{item.experienceCity}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="edu-container">
+        <h3 className="edu-title">Education</h3>
+        {dataEdu.map((item) => (
+          <div className="edu-dates-ctn">
+            <p className="edu-dates">
+              {item.educationFrom} - {item.educationTo}
+            </p>
+            <div className="edu-info-ctn">
+              <p className="edu-uni-city">
+                {item.university}, {item.educationCity}
+              </p>
+              <p className="edu-degree">Degree: {item.degree}</p>
+              <p className="edu-subject">Subject: {item.subject}</p>
             </div>
           </div>
         ))}

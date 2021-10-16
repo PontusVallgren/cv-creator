@@ -49,7 +49,9 @@ const Experience = (props) => {
           type="text"
           placeholder="To"
         />
-        <button onSubmit={handleSubmit}>Add</button>
+        <button className="expBtn" onSubmit={handleSubmit}>
+          Add
+        </button>
         <button>Delete</button>
       </form>
     </div>

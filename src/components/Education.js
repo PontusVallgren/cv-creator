@@ -57,7 +57,9 @@ const Education = (props) => {
           type="text"
           placeholder="To"
         />
-        <button onSubmit={handleSubmit}>Add</button>
+        <button className="eduBtn" onSubmit={handleSubmit}>
+          Add
+        </button>
         <button>Delete</button>
       </form>
     </div>

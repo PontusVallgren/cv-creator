@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./style/App.css";
 import GenerateCv from "./components/GenerateCv";
 import Personal from "./components/Personal";
@@ -31,7 +31,8 @@ const App = () => {
   };
 
   const [input, setInput] = useState(values);
-  const [storage, setStorage] = useState([]);
+  const [storageExp, setStorageExp] = useState([]);
+  const [storageEdu, setStorageEdu] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,26 +44,31 @@ const App = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setStorage([
-      ...storage,
-      {
-        position: input.position,
-        company: input.company,
-        experienceCity: input.experienceCity,
-        experienceFrom: input.experienceFrom,
-        experienceTo: input.experienceTo,
-
-        university: input.university,
-        educationCity: input.educationCity,
-        degree: input.degree,
-        subject: input.subject,
-        educationTo: input.educationTo,
-        educationFrom: input.educationFrom,
-      },
-    ]);
-    setInput(values);
+    if (e.target.children[5].className === "expBtn") {
+      setStorageExp([
+        ...storageExp,
+        {
+          position: input.position,
+          company: input.company,
+          experienceCity: input.experienceCity,
+          experienceFrom: input.experienceFrom,
+          experienceTo: input.experienceTo,
+        },
+      ]);
+    } else if (e.target.children[6].className === "eduBtn") {
+      setStorageEdu([
+        ...storageEdu,
+        {
+          university: input.university,
+          educationCity: input.educationCity,
+          degree: input.degree,
+          subject: input.subject,
+          educationTo: input.educationTo,
+          educationFrom: input.educationFrom,
+        },
+      ]);
+    }
   };
-
   return (
     <div>
       <h1>CV CREATOR</h1>
@@ -83,9 +89,30 @@ const App = () => {
           onSubmit={handleSubmit}
         />
       </div>
-      <GenerateCv input={input} info={storage} />
+      <GenerateCv input={input} dataExp={storageExp} dataEdu={storageEdu} />
     </div>
   );
 };
 
 export default App;
+
+/* const handleSubmit = (e) => {
+  e.preventDefault();
+  setStorage([
+    ...storage,
+    {
+      position: input.position,
+      company: input.company,
+      experienceCity: input.experienceCity,
+      experienceFrom: input.experienceFrom,
+      experienceTo: input.experienceTo,
+
+      university: input.university,
+      educationCity: input.educationCity,
+      degree: input.degree,
+      subject: input.subject,
+      educationTo: input.educationTo,
+      educationFrom: input.educationFrom,
+    },
+  ]);
+}; */
