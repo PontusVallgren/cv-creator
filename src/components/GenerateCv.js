@@ -3,6 +3,7 @@ import "../style/GenerateCv.css";
 
 const GenerateCv = (props) => {
   const input = props.input;
+  const info = props.info;
 
   return (
     <div className="cv-container">
@@ -20,6 +21,23 @@ const GenerateCv = (props) => {
         <p>{input.number}</p>
         <p className="pd-categories">Email</p>
         <p>{input.email}</p>
+      </div>
+      <div className="exp-container">
+        <h3 className="exp-title">Experience</h3>
+        {info.map((item) => (
+          <div className="exp-dates-ctn">
+            <p className="exp-dates">
+              {item.experienceFrom} - {item.experienceTo}
+            </p>
+            <div className="exp-position-ctn">
+              <p className="exp-position">{item.position}</p>
+            </div>
+            <div className="exp-comp-city-ctn">
+              <p className="exp-company">{item.company}</p>
+              <p className="exp-city">{item.experienceCity}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
